@@ -1,7 +1,13 @@
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use 'preservim/NERDTree'
-    use 'goolord/alpha-nvim'
+    use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+    }
     use 'neovim/nvim-lspconfig'
     use 'preservim/NERDTree'
     use 'Mofiqul/dracula.nvim'
@@ -14,6 +20,14 @@ require('packer').startup(function()
     use 'tpope/vim-surround'
     use 'ap/vim-css-color'
     use 'tpope/vim-commentary'
+    use 'tpope/vim-fugitive'
+    use 'nvim-treesitter/nvim-treesitter'
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    -- using packer.nvim
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 end)
 
 -- Lualine setup
@@ -28,8 +42,12 @@ require('lualine').setup {
 -- Pyright setup
 require'lspconfig'.pyright.setup{}
 
+-- Bufferline setup
+require('bufferline').setup()
+
 -- Sets
 local set = vim.opt
+set.termguicolors = true
 set.showmatch = true
 set.ignorecase = true
 set.hlsearch = true
@@ -64,3 +82,5 @@ keymap('n', '<leader>q', ':q<CR>', opts)
 keymap('n', '<leader>wq', ':wq<CR>', opts)
 keymap('n', '<leader>sc', ':source $VIMRC<CR>', opts)
 keymap('n', '<leader>se', ':e $VIMRC<CR>', opts)
+keymap('n', '<leader>f', ':Telescope find_files<CR>', opts)
+keymap('n', '<leader>g', ':Telescope live_grep<CR>', opts)
