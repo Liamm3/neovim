@@ -29,6 +29,11 @@ require('packer').startup(function()
     }
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use 'rcarriga/nvim-notify'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp'
 end)
 
 -- Lua setup
@@ -65,4 +70,16 @@ require'lspconfig'.pyright.setup{}
 -- Bufferline setup
 require('bufferline').setup()
 
+-- notify setup
 vim.notify = require("notify")
+
+-- cmp setup
+local cmp = require'cmp'
+cmp.setup({
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "path" },
+        { name = "buffer" },
+    })
+})

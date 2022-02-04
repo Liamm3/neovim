@@ -1,4 +1,3 @@
--- Keymaps
 local map = function(key)
   -- get the extra options
   local opts = {noremap = true}
@@ -16,6 +15,7 @@ local map = function(key)
     vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
   end
 end
+
 map {'n', '<Leader>e', ':NERDTreeToggle<CR>'}
 map {'n', '<Leader>r', ':NERDTreeFocus<CR>'}
 map {'n', '<Leader>w', ':w<CR>'}

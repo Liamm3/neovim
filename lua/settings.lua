@@ -1,4 +1,3 @@
--- Sets
 local set = vim.opt
 set.termguicolors = true
 set.showmatch = true
