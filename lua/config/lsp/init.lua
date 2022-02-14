@@ -3,8 +3,11 @@ local M = {}
 
 local servers = {
   gopls = {},
-  html = {},
+  html = {
+      filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript.tsx", "typescriptreact", "php", "twig" }
+  },
   jsonls = {},
+  phpactor = {},
   pyright = {},
   rust_analyzer = {},
   sumneko_lua = {

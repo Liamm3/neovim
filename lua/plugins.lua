@@ -2,6 +2,14 @@ require('packer').startup(function()
     -- Packer
     use 'wbthomason/packer.nvim'
 
+    -- webdev
+    use {
+        'kyazdani42/nvim-web-devicons',
+        config = function()
+            require'nvim-web-devicons'.setup {}
+        end
+    }
+
     -- Neogit
     use {
         "TimUntersberger/neogit",
@@ -31,7 +39,7 @@ require('packer').startup(function()
     -- NERDTree
     use 'preservim/NERDTree'
 
-    -- Dracula Theme
+    -- Colorscheme
     use {
         'Mofiqul/dracula.nvim',
         config = function()
@@ -118,11 +126,11 @@ require('packer').startup(function()
     }
 
     -- Misc
-    use 'kyazdani42/nvim-web-devicons'
     use 'editorconfig/editorconfig-vim'
     use 'tpope/vim-surround'
     use 'ap/vim-css-color'
     use 'tpope/vim-commentary'
     use 'nvim-treesitter/nvim-treesitter'
     use 'rcarriga/nvim-notify'
+    use 'nelsyeung/twig.vim'
 end)
